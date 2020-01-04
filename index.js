@@ -1,6 +1,8 @@
 const fetch = require('node-fetch');
 const config = require('./config.json');
 
+const player = config.easyvis_api.player;
+
 const time_api = 'http://worldtimeapi.org/api/timezone/' + config.time_api.location;
 const weather_api = 'https://api.openweathermap.org/data/2.5/weather?id=' + config.weather_api.location + '&APPID=' + config.weather_api.id;
 const easyvis_api_play = 'https://api.easyvis.io/v1/players/' + player + '/play';
@@ -28,7 +30,6 @@ const tokenObject = {
 
 const apiKey = config.easyvis_api.api_key;
 
-const player = config.easyvis_api.player;
 
 // MAIN FUNCTION
 exports.handler = async (event, context, callback) => {

@@ -1,17 +1,17 @@
 {
   "weather_api" : {
-    "id": YOUR_WEATHER_API_ID
+    "id": YOUR_WEATHER_API_ID,
     "location": YOUR WEATHER_API_LOCATION
   },
   "time_api" : {
-    "location" : "YOUR_TIME_ZONE_LOCATION"
+    "location" : YOUR_TIME_ZONE_LOCATION
   },
   "easyvis_api" : {
     "auth" : {
       "client_id" : YOUR_CLIENT_ID,
       "client_secret": YOUR_CLIENT_SECRET,
       "access_token": YOUR_INITIAL_ACCESS_TOKEN,
-      "refresh_token": YOUR_INITIAL_REFRESH_TOKEN,
+      "refresh_token": YOUR_INITIAL_REFRESH_TOKEN
     },
     "api_key": YOUR_API_KEY,
     "player": YOUR_PLAYER
