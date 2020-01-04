@@ -1,0 +1,33 @@
+{
+  "Comment": "Triggers a lambda every 10min",
+  "StartAt": "TriggerLambda",
+  "States": {
+    "TriggerLambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:...",
+      "ResultPath": "$.iterator",
+      "Next": "validCheck"
+    },
+    "validCheck": {
+            "Type": "Choice",
+            "Choices": [
+                {
+                  "Variable": "$.iterator.continue",
+                  "BooleanEquals": true,
+                  "Next": "wait_using_seconds"
+                }
+            ],
+            "Default": "FinalState"
+      },
+    "wait_using_seconds": {
+      "Type": "Wait",
+      "Seconds": 600,
+      "Next": "TriggerLambda"
+    },
+    "FinalState": {
+      "Type": "Wait",
+      "Seconds": 1,
+      "End": true
+    }
+  }
+}
