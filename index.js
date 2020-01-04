@@ -1,16 +1,15 @@
 const fetch = require('node-fetch');
+const config = require('./config.json');
 
-const time_api = 'http://worldtimeapi.org/api/timezone/Europe/Berlin';
-const weather_api_id = YOUR_WEATHER_API_ID;
-const weather_api_location_id = YOUR WEATHER_API_LOCATION;
-const weather_api = 'https://api.openweathermap.org/data/2.5/weather?id=' + weather_api_location_id + '&APPID=' + weather_api_id;
+const time_api = 'http://worldtimeapi.org/api/timezone/' + config.time_api.location;
+const weather_api = 'https://api.openweathermap.org/data/2.5/weather?id=' + config.weather_api.location + '&APPID=' + config.weather_api.id;
 const easyvis_api_play = 'https://api.easyvis.io/v1/players/' + player + '/play';
 const easyvis_api_stop = 'https://api.easyvis.io/v1/players/' + player + '/stop';
 
 const credentials = {
   client: {
-    id: YOUR_CLIENT_ID,
-    secret: YOUR_CLIENT_SECRET
+    id: config.easyvis_api.auth.client_id,
+    secret: config.easyvis_api.auth.client_secret
   },
   auth: {
     tokenHost: 'https://auth.easyvis.io',
@@ -22,14 +21,14 @@ const credentials = {
 };
 const oauth2 = require('simple-oauth2').create(credentials);
 const tokenObject = {
-  'access_token': YOUR_INITIAL_ACCESS_TOKEN,
-  'refresh_token': YOUR_REFRESH_TOKEN,
+  'access_token': config.easyvis_api.auth.access_token,
+  'refresh_token': config.easyvis_api.auth.refresh_token,
   'expires_in': '3600'
 };
 
-const apiKey = YOUR_API_KEY;
+const apiKey = config.easyvis_api.api_key;
 
-const player = YOUR_PLAYER;
+const player = config.easyvis_api.player;
 
 // MAIN FUNCTION
 exports.handler = async (event, context, callback) => {
